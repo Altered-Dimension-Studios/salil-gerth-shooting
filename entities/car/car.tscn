@@ -51,7 +51,8 @@ position = Vector2(0.244043, -7.375)
 scale = Vector2(2.7184, 2.15476)
 sprite_frames = SubResource("SpriteFrames_bript")
 animation = &"new_animation"
-frame_progress = 0.87717
+frame = 1
+frame_progress = 0.673901
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -68,3 +69,9 @@ visible = false
 position = Vector2(5.68434e-14, -1.90735e-06)
 scale = Vector2(0.0546875, 0.0546875)
 texture = ExtResource("5_r46w7")
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
