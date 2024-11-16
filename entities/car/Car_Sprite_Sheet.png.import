@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0v6j271jo5q"
-path="res://.godot/imported/vroom-vroom-2.png-ddd75c1de6db556a982501f8fdf09633.ctex"
+uid="uid://dejavsix2code"
+path="res://.godot/imported/Car_Sprite_Sheet.png-95765dde91bdc88e40fb95f680feaa66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/car/vroom-vroom-2.png"
-dest_files=["res://.godot/imported/vroom-vroom-2.png-ddd75c1de6db556a982501f8fdf09633.ctex"]
+source_file="res://entities/car/Car_Sprite_Sheet.png"
+dest_files=["res://.godot/imported/Car_Sprite_Sheet.png-95765dde91bdc88e40fb95f680feaa66.ctex"]
 
 [params]
 
