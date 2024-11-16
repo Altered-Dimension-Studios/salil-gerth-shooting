@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://cg508xt4ua557"]
+
+[ext_resource type="Texture2D" uid="uid://dx6wo81ewjv3o" path="res://entities/car/vroom-vroom-1.png" id="1_dam4b"]
+[ext_resource type="Texture2D" uid="uid://bv0v6j271jo5q" path="res://entities/car/vroom-vroom-2.png" id="2_uof8b"]
+[ext_resource type="Script" path="res://entities/car/car.gd" id="2_ye0o3"]
+[ext_resource type="Texture2D" uid="uid://c2ev1np85bg4p" path="res://entities/car/vroom-vroom-3.png" id="3_dkiol"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bript"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dam4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uof8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dkiol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvmv3"]
+size = Vector2(149, 29)
+
+[node name="Car" type="Area2D"]
+script = ExtResource("2_ye0o3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bript")
+frame_progress = 0.870803
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_pvmv3")
