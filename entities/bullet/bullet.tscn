@@ -91,7 +91,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvynp"]
 size = Vector2(28, 30)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["player_bullet"]]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_0u3jp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -102,3 +104,5 @@ frame_progress = 0.397851
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.37114e-08, 0)
 shape = SubResource("RectangleShape2D_hvynp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

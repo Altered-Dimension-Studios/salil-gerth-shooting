@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://coaicoodwoqy6"]
+
+[ext_resource type="Script" path="res://entities/kamikaze-enemy/kamikaze_enemy.gd" id="1_68l7g"]
+[ext_resource type="Texture2D" uid="uid://dijvonp0kx3w3" path="res://entities/kamikaze-enemy/kamkikaze-enemy.png" id="1_nq7mw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jmy"]
+size = Vector2(26, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qdfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nq7mw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="KamikazeEnemy" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_68l7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_n8jmy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1qdfd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

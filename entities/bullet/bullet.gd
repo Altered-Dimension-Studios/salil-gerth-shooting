@@ -1,7 +1,6 @@
 extends Area2D
 
-var speed = 750
-
+const SPEED = 750
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,4 +13,8 @@ func _process(delta):
 	
 
 func _physics_process(delta):
-	position += transform.x * speed * delta
+	position += transform.x * SPEED * delta
+
+
+func _on_area_entered(area: Area2D) -> void:
+	queue_free()

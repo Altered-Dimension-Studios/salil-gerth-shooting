@@ -44,6 +44,7 @@ animations = [{
 size = Vector2(149, 29)
 
 [node name="Car" type="Area2D"]
+collision_mask = 4
 script = ExtResource("2_ye0o3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -74,4 +75,5 @@ texture = ExtResource("5_r46w7")
 wait_time = 0.15
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
