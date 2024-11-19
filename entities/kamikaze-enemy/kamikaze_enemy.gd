@@ -34,3 +34,7 @@ func _on_attack_timer_timeout() -> void:
 	path_to_player_car = (World.get_car_position() - global_position).normalized()
 	await get_tree().create_timer(0.1).timeout
 	charged_up = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
