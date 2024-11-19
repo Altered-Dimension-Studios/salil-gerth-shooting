@@ -45,4 +45,4 @@ func _on_shoot_cooldown_timeout() -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	queue_free()
+	hide()

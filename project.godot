@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="2d-car-game"
-run/main_scene="res://world.tscn"
+run/main_scene="res://entities/car/world.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Settings="*res://globals/settings.tscn"
+World="*res://world.gd"
 
 [debug]
 

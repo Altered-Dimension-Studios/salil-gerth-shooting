@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx8bfcld6kqsj"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_fq466"]
+[ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="3_ql8mj"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="4_fs6en"]
+[ext_resource type="Script" path="res://entities/enemy-spawner/enemy_spawner.gd" id="5_vq837"]
+
+[sub_resource type="Curve2D" id="Curve2D_yphh1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+}
+point_count = 2
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_fq466")
+
+[node name="Settings" parent="." instance=ExtResource("3_ql8mj")]
+
+[node name="Background" parent="." instance=ExtResource("4_fs6en")]
+
+[node name="EnemyTopPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yphh1")
+script = ExtResource("5_vq837")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyTopPath"]
+
+[node name="SpawnTimer" type="Timer" parent="EnemyTopPath"]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="EnemyTopPath/SpawnTimer" to="EnemyTopPath" method="_on_spawn_timer_timeout"]

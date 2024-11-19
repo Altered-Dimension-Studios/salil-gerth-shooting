@@ -1,6 +1,5 @@
 extends Area2D
 
-
 const PLAYER_COLLISION_LAYER_INDEX: int = 1 # TODO: move this in some global class
 const SPEED = 300
 var health = 3
@@ -27,8 +26,11 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 
 
+func start_attack_timer():
+	$AttackTimer.start()
+
+
 func _on_attack_timer_timeout() -> void:
-	var player_position = get_parent().get_node("Car").global_position
-	path_to_player_car = (player_position - global_position).normalized()
+	path_to_player_car = (World.get_car_position() - global_position).normalized()
 	await get_tree().create_timer(0.1).timeout
 	charged_up = true
