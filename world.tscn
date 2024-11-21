@@ -1,18 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx8bfcld6kqsj"]
+[gd_scene load_steps=6 format=3 uid="uid://bx8bfcld6kqsj"]
 
-[ext_resource type="PackedScene" uid="uid://cg508xt4ua557" path="res://entities/car/car.tscn" id="1_kohxf"]
-[ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_wc17a"]
-[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="3_3hpp2"]
-[ext_resource type="PackedScene" uid="uid://coaicoodwoqy6" path="res://entities/kamikaze-enemy/kamikaze-enemy.tscn" id="4_fdbqt"]
+[ext_resource type="Script" path="res://world.gd" id="1_yblek"]
+[ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_b6x71"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="3_uux4w"]
+[ext_resource type="Script" path="res://entities/enemy-spawner/enemy_spawner.gd" id="4_lc5xu"]
+
+[sub_resource type="Curve2D" id="Curve2D_wic8y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 640, 0, 0, 0, 0, 0, 648)
+}
+point_count = 5
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_yblek")
 
-[node name="Car" parent="." instance=ExtResource("1_kohxf")]
-position = Vector2(128, 502)
+[node name="Settings" parent="." instance=ExtResource("2_b6x71")]
 
-[node name="Settings" parent="." instance=ExtResource("2_wc17a")]
+[node name="Background" parent="." instance=ExtResource("3_uux4w")]
 
-[node name="Background" parent="." instance=ExtResource("3_3hpp2")]
+[node name="EnemySpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wic8y")
+script = ExtResource("4_lc5xu")
 
-[node name="Kamikaze-enemy" parent="." instance=ExtResource("4_fdbqt")]
-position = Vector2(574, 211)
+[node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawner"]
+position = Vector2(1076.18, 0)
+progress = 1724.17
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

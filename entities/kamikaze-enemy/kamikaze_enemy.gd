@@ -1,17 +1,27 @@
 extends Area2D
 
+enum State {DROP_DOWN, CHARGE_ATTACK, ATTACK}
 const PLAYER_COLLISION_LAYER_INDEX: int = 1 # TODO: move this in some global class
 const SPEED = 300
+var curren_state: int
 var health = 3
 var path_to_player_car: Vector2
 var charged_up: bool = false
+var timer: float
 
+
+func _init() -> void:
+	curren_state = State.DROP_DOWN
+	timer = 0.7
 
 func _physics_process(delta: float) -> void:
-	if charged_up: 
-		position += path_to_player_car * SPEED * delta
-	else:
-		position += (path_to_player_car * SPEED * delta) * -1
+	match curren_state:
+		State.DROP_DOWN:
+			drop_down(delta)
+		State.CHARGE_ATTACK:
+			charge_attack(delta)
+		State.ATTACK:
+			attack(delta)
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -26,14 +36,26 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 
 
-func start_attack_timer():
-	$AttackTimer.start()
+func charge_attack(delta) -> void:
+	position += (path_to_player_car * SPEED * delta) * -1
+	if timer >= 0:
+		timer -= delta
+	else:
+		curren_state = State.ATTACK
+	
+
+func attack(delta) -> void:
+	position += path_to_player_car * SPEED * delta
 
 
-func _on_attack_timer_timeout() -> void:
-	path_to_player_car = (World.get_car_position() - global_position).normalized()
-	await get_tree().create_timer(0.1).timeout
-	charged_up = true
+func drop_down(delta: float) -> void:
+	position += Vector2(0, 1) * SPEED * 1.25 * delta
+	if timer >= 0:
+		timer -= delta
+	else:
+		path_to_player_car = (World.get_car_position() - global_position).normalized()
+		curren_state = State.CHARGE_ATTACK
+		timer = 0.2
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
