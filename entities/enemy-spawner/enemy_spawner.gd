@@ -1,10 +1,15 @@
 extends Node2D
 
+const SPAWN_OFFSET_X: int = 100
 const SPAWN_OFFSET_Y: int = 100
 const KAMIKAZE_ENEMY = preload("res://entities/kamikaze-enemy/kamikaze-enemy.tscn")
+const TRUCK_ENEMY = preload("res://entities/truck-enemy/truck-enemy.tscn")
 const TOP_RANGE = [0.2, 0.48]
+const LEFT_SPAWN_POINT: float = 0.03
+const RIGHT_SPAWN_POINT: float = 0.65
 enum Spawns {LEFT_SPAWN, TOP_SPAWN, RIGHT_SPAWN}
 var rng = RandomNumberGenerator.new()
+
 
 func _on_spawn_timer_timeout() -> void:
 	random_spawn()
@@ -30,12 +35,29 @@ func spawn_top():
 	enemy.position = enemy_spawn_location.position
 	
 	add_child(enemy)
-	# TODO: add transition
 
 
 func spawn_left():
-	pass
+	var enemy = TRUCK_ENEMY.instantiate()
 	
+	var enemy_spawn_location = $SpawnLocation
+	enemy_spawn_location.progress_ratio = LEFT_SPAWN_POINT
+	enemy_spawn_location.position.x -= SPAWN_OFFSET_X
+	enemy.position = enemy_spawn_location.position
+	enemy.set_transition_direction(Vector2(1, 0))
 	
+	add_child(enemy)
+
+
 func spawn_right():
-	pass
+	var enemy = TRUCK_ENEMY.instantiate()
+	# flip sprite
+	enemy.transform.x *= -1
+	
+	var enemy_spawn_location = $SpawnLocation
+	enemy_spawn_location.progress_ratio = RIGHT_SPAWN_POINT
+	enemy_spawn_location.position.x += SPAWN_OFFSET_X
+	enemy.position = enemy_spawn_location.position
+	enemy.set_transition_direction(Vector2(-1, 0))
+	
+	add_child(enemy)

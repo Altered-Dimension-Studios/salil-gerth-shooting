@@ -23,8 +23,9 @@ curve = SubResource("Curve2D_wic8y")
 script = ExtResource("4_lc5xu")
 
 [node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawner"]
-position = Vector2(1076.18, 0)
-progress = 1724.17
+position = Vector2(0, 540.242)
+rotation = -1.5708
+progress = 107.761
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
 autostart = true
