@@ -4,14 +4,14 @@ class_name Car
 const bulletPath = preload('res://entities/bullet/bullet.tscn')
 
 const NORMAL_SPEED: float = 400
-const SHOOTING_SPEED: float = 100
+const SHOOTING_SPEED: float = 200
 const MIN_CLAMP_VECTOR: Vector2 = Vector2(25, 0)
 var MAX_CLAMP_VECTOR: Vector2
 var can_shoot: bool = true
 var shoot_hold_time: float = 0.0
-const INITIAL_COOLDOWN: float = 0.3  
-const MIN_COOLDOWN: float = 0.1     
-const COOLDOWN_DECREASE_RATE: float = 0.05  
+const INITIAL_FIRERATE: float = 0.3  
+const MIN_FIRERATE: float = 0.1     
+const FIRERATE_DECREASE_RATE: float = 0.05  
 
 func _ready() -> void:
 	self.position.y = Settings.screen_size.y - 50
@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * current_speed
+		if velocity.x > 0:
+			velocity = velocity.normalized() * current_speed/1.75
 	
 	position += velocity * delta
 	position = position.clamp(MIN_CLAMP_VECTOR, MAX_CLAMP_VECTOR)
@@ -49,8 +51,8 @@ func shoot():
 	
 	can_shoot = false
 	var new_cooldown = max(
-		INITIAL_COOLDOWN - (shoot_hold_time * COOLDOWN_DECREASE_RATE),
-		MIN_COOLDOWN
+		INITIAL_FIRERATE - (shoot_hold_time * FIRERATE_DECREASE_RATE),
+		MIN_FIRERATE
 	)
 	$ShootCooldown.wait_time = new_cooldown
 	$ShootCooldown.start()
