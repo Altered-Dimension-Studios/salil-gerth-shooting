@@ -1,35 +1,83 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfuh00lklmk42"]
+[gd_scene load_steps=9 format=3 uid="uid://cfuh00lklmk42"]
 
 [ext_resource type="Script" path="res://scenes/parallax_background.gd" id="1_7hmqq"]
-[ext_resource type="Texture2D" uid="uid://cpacsp218we6n" path="res://scenes/background/parallax1.png" id="1_h35n2"]
-[ext_resource type="Texture2D" uid="uid://cofo1m58oapvd" path="res://scenes/background/parallax2.png" id="2_qiplw"]
-[ext_resource type="Texture2D" uid="uid://bta83soctingc" path="res://scenes/background/parallax3.png" id="3_8y2f3"]
+[ext_resource type="Texture2D" uid="uid://cud2ne1nu5fyp" path="res://scenes/background/BG2.png" id="2_2jwmp"]
+[ext_resource type="Texture2D" uid="uid://nppjsjk6csow" path="res://scenes/background/BG3.png" id="3_x2uhk"]
+[ext_resource type="Texture2D" uid="uid://dewk3oylhmjcb" path="res://scenes/background/BG4.png" id="4_ou320"]
+[ext_resource type="Texture2D" uid="uid://biri7ulsn8yt4" path="res://scenes/background/BG5.png" id="5_i68uo"]
+[ext_resource type="Texture2D" uid="uid://b2gnb0nvr4xtb" path="res://scenes/background/BG6.png" id="6_cbagv"]
+[ext_resource type="Texture2D" uid="uid://c6wi6sa7y1jiq" path="res://scenes/background/BG7.png" id="7_bmjdo"]
+[ext_resource type="Texture2D" uid="uid://dk1wwgmx2qvsr" path="res://scenes/background/BG1.png" id="8_18kl5"]
 
 [node name="Background" type="Node2D"]
+z_index = -1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 19
 script = ExtResource("1_7hmqq")
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1280, 0)
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-position = Vector2(640, 324)
-scale = Vector2(5, 2.52735)
-texture = ExtResource("1_h35n2")
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("2_2jwmp")
 
-[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1280, 0)
+[node name="Foreground Far" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountains"]
-position = Vector2(647, 323.5)
-scale = Vector2(5.04688, 2.52734)
-texture = ExtResource("2_qiplw")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground Far"]
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("3_x2uhk")
+
+[node name="Foreground Medium" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground Medium"]
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("4_ou320")
+
+[node name="Foreground Near" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground Near"]
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i68uo")
 
 [node name="Road" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1280, 0)
+visible = false
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Road"]
-position = Vector2(640, 322)
-scale = Vector2(5, 2.53125)
-texture = ExtResource("3_8y2f3")
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("6_cbagv")
+
+[node name="Lamps" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = -1
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Lamps"]
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("7_bmjdo")
+
+[node name="BG" type="Sprite2D" parent="."]
+visibility_layer = 524288
+z_index = -1
+position = Vector2(512, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("8_18kl5")

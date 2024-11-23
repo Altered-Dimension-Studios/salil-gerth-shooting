@@ -1,20 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnknxrgguf1ea"]
+[gd_scene load_steps=12 format=3 uid="uid://dnknxrgguf1ea"]
 
 [ext_resource type="Script" path="res://entities/truck-enemy/truck_enemy.gd" id="1_pp4n0"]
-[ext_resource type="Texture2D" uid="uid://dnj30i230nhrc" path="res://entities/truck-enemy/truck-enemy.png" id="2_1jvyr"]
+[ext_resource type="Texture2D" uid="uid://btey38qy1ofwy" path="res://entities/car/Car_Sprite_Sheet.png" id="3_04e3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piafv"]
-size = Vector2(172, 51)
+size = Vector2(165, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jivy3"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(0, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4n4a"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(64, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c5nt"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(128, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5liu"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(192, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn1mc"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(256, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_120jc"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(320, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b1ox"]
+atlas = ExtResource("3_04e3p")
+region = Rect2(384, 0, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8kj8t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1jvyr")
+"texture": SubResource("AtlasTexture_jivy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4n4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c5nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5liu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn1mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_120jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b1ox")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [node name="TruckEnemy" type="Area2D"]
@@ -23,11 +69,15 @@ collision_mask = 3
 script = ExtResource("1_pp4n0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 15.5)
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_piafv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.92, 0.184, 0.196266, 1)
+use_parent_material = true
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8kj8t")
+frame_progress = 0.632946
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-89, 15.5)

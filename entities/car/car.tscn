@@ -1,59 +1,125 @@
-[gd_scene load_steps=10 format=3 uid="uid://cg508xt4ua557"]
+[gd_scene load_steps=18 format=3 uid="uid://cg508xt4ua557"]
 
-[ext_resource type="Texture2D" uid="uid://dejavsix2code" path="res://entities/car/Car_Sprite_Sheet.png" id="2_hjqqg"]
+[ext_resource type="Texture2D" uid="uid://btey38qy1ofwy" path="res://entities/car/Car_Sprite_Sheet.png" id="2_hjqqg"]
 [ext_resource type="Script" path="res://entities/car/car.gd" id="2_ye0o3"]
-[ext_resource type="Texture2D" uid="uid://cobjx4iorft6" path="res://icon.svg" id="5_r46w7"]
+[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_yxc70"]
+[ext_resource type="Texture2D" uid="uid://bfr4d0cshfuvp" path="res://entities/car/gun.png" id="4_j7ej8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wj568"]
-atlas = ExtResource("2_hjqqg")
-region = Rect2(0, 0, 55, 21)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cw1fv"]
+resource_local_to_scene = true
+shader = ExtResource("2_yxc70")
+shader_parameter/active = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l84rv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_raj85"]
 atlas = ExtResource("2_hjqqg")
-region = Rect2(55, 0, 55, 21)
+region = Rect2(0, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_esc3o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1fac"]
 atlas = ExtResource("2_hjqqg")
-region = Rect2(110, 0, 55, 21)
+region = Rect2(64, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8b4t2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl3hd"]
 atlas = ExtResource("2_hjqqg")
-region = Rect2(165, 0, 55, 21)
+region = Rect2(128, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0engk"]
+atlas = ExtResource("2_hjqqg")
+region = Rect2(192, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjatp"]
+atlas = ExtResource("2_hjqqg")
+region = Rect2(256, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce11l"]
+atlas = ExtResource("2_hjqqg")
+region = Rect2(320, 0, 64, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0p82"]
+atlas = ExtResource("2_hjqqg")
+region = Rect2(384, 0, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bript"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wj568")
+"texture": SubResource("AtlasTexture_raj85")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l84rv")
+"texture": SubResource("AtlasTexture_p1fac")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_esc3o")
+"texture": SubResource("AtlasTexture_sl3hd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8b4t2")
+"texture": SubResource("AtlasTexture_0engk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjatp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce11l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0p82")
 }],
 "loop": true,
-"name": &"new_animation",
-"speed": 24.0
+"name": &"idle",
+"speed": 60.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvmv3"]
 size = Vector2(149, 29)
 
+[sub_resource type="Animation" id="Animation_pedi2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vadxn"]
+resource_name = "get_damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqudh"]
+_data = {
+"RESET": SubResource("Animation_pedi2"),
+"get_damaged": SubResource("Animation_vadxn")
+}
+
 [node name="Car" type="Area2D"]
+z_index = 2
+material = SubResource("ShaderMaterial_cw1fv")
 collision_mask = 4
 script = ExtResource("2_ye0o3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.244043, -7.375)
-scale = Vector2(2.7184, 2.15476)
+use_parent_material = true
+position = Vector2(68.0175, -25.0685)
+scale = Vector2(3, 2.709)
 sprite_frames = SubResource("SpriteFrames_bript")
-animation = &"new_animation"
-frame = 1
-frame_progress = 0.673901
+animation = &"idle"
+frame_progress = 0.297031
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -61,19 +127,24 @@ position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_pvmv3")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-33, -22)
+position = Vector2(52, -32)
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(53, -18)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-visible = false
-position = Vector2(5.68434e-14, -1.90735e-06)
-scale = Vector2(0.0546875, 0.0546875)
-texture = ExtResource("5_r46w7")
+position = Vector2(21, -8)
+scale = Vector2(1, 1.015)
+texture = ExtResource("4_j7ej8")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.15
 autostart = true
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gqudh")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

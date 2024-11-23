@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx8bfcld6kqsj"]
+[gd_scene load_steps=12 format=3 uid="uid://bx8bfcld6kqsj"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_yblek"]
 [ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_b6x71"]
-[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="3_uux4w"]
+[ext_resource type="PackedScene" uid="uid://cg508xt4ua557" path="res://entities/car/car.tscn" id="2_ytdk3"]
+[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="3_52axv"]
+[ext_resource type="PackedScene" uid="uid://cfuh00lklmk42" path="res://scenes/background.tscn" id="3_uux4w"]
 [ext_resource type="Script" path="res://entities/enemy-spawner/enemy_spawner.gd" id="4_lc5xu"]
 [ext_resource type="Script" path="res://ui/info-panel.gd" id="5_p3qd7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxsw3"]
+resource_local_to_scene = true
+shader = ExtResource("3_52axv")
+shader_parameter/active = false
 
 [sub_resource type="Curve2D" id="Curve2D_wic8y"]
 _data = {
@@ -20,9 +27,12 @@ default_font = SubResource("SystemFont_n1b8q")
 [node name="World" type="Node2D"]
 script = ExtResource("1_yblek")
 
-[node name="Settings" parent="." instance=ExtResource("2_b6x71")]
+[node name="Car" parent="." instance=ExtResource("2_ytdk3")]
+visibility_layer = 524288
+material = SubResource("ShaderMaterial_vxsw3")
+position = Vector2(619, 323)
 
-[node name="Background" parent="." instance=ExtResource("3_uux4w")]
+[node name="Settings" parent="." instance=ExtResource("2_b6x71")]
 
 [node name="EnemySpawner" type="Path2D" parent="."]
 curve = SubResource("Curve2D_wic8y")
@@ -39,6 +49,8 @@ autostart = true
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
+
+[node name="Background" parent="." instance=ExtResource("3_uux4w")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
