@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca86qfg5fkxak"]
+
+[sub_resource type="Animation" id="Animation_pedi2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vadxn"]
+resource_name = "get_damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqudh"]
+_data = {
+"RESET": SubResource("Animation_pedi2"),
+"get_damaged": SubResource("Animation_vadxn")
+}
+
+[node name="HitAnimation" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_gqudh")
+}

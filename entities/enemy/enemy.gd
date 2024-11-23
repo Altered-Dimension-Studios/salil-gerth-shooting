@@ -11,7 +11,9 @@ func _on_area_entered(area: Area2D) -> void:
 		queue_free()
 		SignalBus.enemy_died.emit()
 	
+	$HitAnimation.play("get_damaged")
 	health -= 1
+	
 	if health < 0:
 		# TODO: add explosion gfx here
 		queue_free()

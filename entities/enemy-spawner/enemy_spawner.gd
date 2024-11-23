@@ -5,8 +5,8 @@ const SPAWN_OFFSET_Y: int = 100
 const KAMIKAZE_ENEMY = preload("res://entities/kamikaze-enemy/kamikaze-enemy.tscn")
 const TRUCK_ENEMY = preload("res://entities/truck-enemy/truck-enemy.tscn")
 const TOP_RANGE = [0.2, 0.48]
-const LEFT_SPAWN_POINT: float = 0.03
-const RIGHT_SPAWN_POINT: float = 0.65
+const LEFT_SPAWN_POINT: float = 0.012
+const RIGHT_SPAWN_POINT: float = 0.737
 enum Spawns {LEFT_SPAWN, TOP_SPAWN, RIGHT_SPAWN}
 var rng = RandomNumberGenerator.new()
 
@@ -51,8 +51,6 @@ func spawn_left():
 
 func spawn_right():
 	var enemy = TRUCK_ENEMY.instantiate()
-	# flip sprite
-	enemy.transform.x *= -1
 	
 	var enemy_spawn_location = $SpawnLocation
 	enemy_spawn_location.progress_ratio = RIGHT_SPAWN_POINT

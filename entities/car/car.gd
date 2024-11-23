@@ -5,14 +5,15 @@ const bulletPath = preload('res://entities/bullet/bullet.tscn')
 
 
 const SPEED: float = 300.0
-const MIN_CLAMP_VECTOR: Vector2 = Vector2(100, 0)
+const MIN_CLAMP_VECTOR: Vector2 = Vector2(85, 0)
 var MAX_CLAMP_VECTOR: Vector2
 var can_shoot: bool = true
 
 func _ready() -> void:
 	self.position.y = Settings.screen_size.y - 50;
-	MAX_CLAMP_VECTOR = Settings.screen_size - Vector2(100, 0);
+	MAX_CLAMP_VECTOR = Settings.screen_size - MIN_CLAMP_VECTOR;
 	$Sprite.play();
+
 
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
@@ -44,6 +45,4 @@ func _on_shoot_cooldown_timeout() -> void:
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	#hide()
-	print('dead');
-	$HitAnimation.play("get_damaged");
+	$HitAnimation.play("get_damaged")
