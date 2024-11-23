@@ -61,3 +61,8 @@ func spawn_right():
 	enemy.set_transition_direction(Vector2(-1, 0))
 	
 	add_child(enemy)
+
+
+func _on_level_timer_timeout() -> void:
+	print("spawn boss")
+	$SpawnTimer.stop()

@@ -4,7 +4,6 @@ enum State {DROP_DOWN, CHARGE_ATTACK, ATTACK}
 const SPEED = 300
 var curren_state: int
 var path_to_player_car: Vector2
-var charged_up: bool = false
 var timer: float
 
 

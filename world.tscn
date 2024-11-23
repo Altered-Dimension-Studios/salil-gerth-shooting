@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx8bfcld6kqsj"]
+[gd_scene load_steps=8 format=3 uid="uid://bx8bfcld6kqsj"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_yblek"]
 [ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_b6x71"]
@@ -10,6 +10,11 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 640, 0, 0, 0, 0, 0, 648)
 }
 point_count = 5
+
+[sub_resource type="SystemFont" id="SystemFont_n1b8q"]
+
+[sub_resource type="Theme" id="Theme_cudbm"]
+default_font = SubResource("SystemFont_n1b8q")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_yblek")
@@ -30,4 +35,59 @@ progress = 107.761
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
 autostart = true
 
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_cudbm")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Score" type="RichTextLabel" parent="UI/Panel/MarginContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+text = "0000000
+"
+scroll_active = false
+
+[node name="Lives" type="RichTextLabel" parent="UI/Panel/MarginContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1UP: 3"
+scroll_active = false
+
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="EnemySpawner" method="_on_level_timer_timeout"]
