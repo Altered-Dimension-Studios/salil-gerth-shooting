@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SignalBus="*res://globals/signal-bus.gd"
 Settings="*res://globals/settings.tscn"
 World="*res://world.gd"
 

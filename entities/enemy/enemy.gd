@@ -9,8 +9,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(PLAYER_COLLISION_LAYER_INDEX):
 		# TODO: add explosion gfx here
 		queue_free()
+		SignalBus.enemy_died.emit()
 	
 	health -= 1
-	if health <= 0:
+	if health < 0:
 		# TODO: add explosion gfx here
 		queue_free()
+		SignalBus.enemy_died.emit()
