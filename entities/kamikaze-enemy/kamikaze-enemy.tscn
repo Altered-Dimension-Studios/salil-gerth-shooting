@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://coaicoodwoqy6"]
+[gd_scene load_steps=11 format=3 uid="uid://coaicoodwoqy6"]
 
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_5nsjq"]
 [ext_resource type="Script" path="res://entities/kamikaze-enemy/kamikaze_enemy.gd" id="1_68l7g"]
 [ext_resource type="Texture2D" uid="uid://d2hofbp6dxcuk" path="res://entities/kamikaze-enemy/kamikaze_enemy.png" id="2_3rnti"]
-[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="3_xefty"]
+[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="3_xefty"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8rv"]
 resource_local_to_scene = true
@@ -55,6 +55,7 @@ shape = SubResource("RectangleShape2D_n8jmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_1qdfd")
 frame = 1
 frame_progress = 0.712049
