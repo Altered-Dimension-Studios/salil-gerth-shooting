@@ -10,7 +10,7 @@ var MAX_CLAMP_VECTOR: Vector2
 var can_shoot: bool = true
 
 func _ready() -> void:
-	self.position.y = Settings.screen_size.y - 100;
+	self.position.y = Settings.screen_size.y - 50;
 	MAX_CLAMP_VECTOR = Settings.screen_size - Vector2(100, 0);
 	$Sprite.play();
 

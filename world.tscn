@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_wic8y"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 640, 0, 0, 0, 0, 0, 648)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1022, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1021, 1, 0, 0, 0, 0, 1022, 1027, 0, 0, 0, 0, 2, 1022)
 }
 point_count = 5
 
@@ -32,7 +32,7 @@ curve = SubResource("Curve2D_wic8y")
 script = ExtResource("4_lc5xu")
 
 [node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawner"]
-position = Vector2(0, 540.242)
+position = Vector2(0, 914.246)
 rotation = -1.5708
 progress = 107.761
 
@@ -48,8 +48,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1025.0
+offset_bottom = 1024.0
 grow_horizontal = 2
 grow_vertical = 2
 
