@@ -13,7 +13,7 @@
 z_index = -1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 19
+layer = -1
 script = ExtResource("1_7hmqq")
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -26,7 +26,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_2jwmp")
 
 [node name="Foreground Far" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 z_index = -1
 motion_mirroring = Vector2(1024, 0)
 
@@ -36,7 +35,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("3_x2uhk")
 
 [node name="Foreground Medium" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 z_index = -1
 motion_mirroring = Vector2(1024, 0)
 
@@ -46,7 +44,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_ou320")
 
 [node name="Foreground Near" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 z_index = -1
 motion_mirroring = Vector2(1024, 0)
 
@@ -56,7 +53,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_i68uo")
 
 [node name="Road" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 z_index = -1
 motion_mirroring = Vector2(1024, 0)
 
@@ -66,7 +62,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("6_cbagv")
 
 [node name="Lamps" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 z_index = -1
 motion_mirroring = Vector2(1024, 0)
 
