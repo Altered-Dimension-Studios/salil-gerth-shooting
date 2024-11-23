@@ -6,6 +6,9 @@ var curren_state: int
 var path_to_player_car: Vector2
 var timer: float
 
+func _ready() -> void:
+	$AnimatedSprite2D.play()
+
 
 func _init() -> void:
 	health = 3
