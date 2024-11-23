@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://coaicoodwoqy6"]
+[gd_scene load_steps=8 format=3 uid="uid://coaicoodwoqy6"]
 
+[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_5nsjq"]
 [ext_resource type="Script" path="res://entities/kamikaze-enemy/kamikaze_enemy.gd" id="1_68l7g"]
 [ext_resource type="Texture2D" uid="uid://dijvonp0kx3w3" path="res://entities/kamikaze-enemy/kamkikaze-enemy.png" id="1_nq7mw"]
+[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="3_xefty"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8rv"]
+resource_local_to_scene = true
+shader = ExtResource("1_5nsjq")
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jmy"]
 size = Vector2(26, 25)
@@ -18,6 +25,7 @@ animations = [{
 }]
 
 [node name="KamikazeEnemy" type="Area2D"]
+material = SubResource("ShaderMaterial_hj8rv")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_68l7g")
@@ -27,9 +35,12 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_n8jmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_1qdfd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HitAnimation" parent="." instance=ExtResource("3_xefty")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg508xt4ua557"]
+[gd_scene load_steps=16 format=3 uid="uid://cg508xt4ua557"]
 
 [ext_resource type="Texture2D" uid="uid://btey38qy1ofwy" path="res://entities/car/Car_Sprite_Sheet.png" id="2_hjqqg"]
 [ext_resource type="Script" path="res://entities/car/car.gd" id="2_ye0o3"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_yxc70"]
 [ext_resource type="Texture2D" uid="uid://bfr4d0cshfuvp" path="res://entities/car/gun.png" id="4_j7ej8"]
+[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="5_huvx2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cw1fv"]
 resource_local_to_scene = true
@@ -70,43 +71,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvmv3"]
 size = Vector2(149, 29)
 
-[sub_resource type="Animation" id="Animation_pedi2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_vadxn"]
-resource_name = "get_damaged"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqudh"]
-_data = {
-"RESET": SubResource("Animation_pedi2"),
-"get_damaged": SubResource("Animation_vadxn")
-}
-
 [node name="Car" type="Area2D"]
 z_index = 2
 material = SubResource("ShaderMaterial_cw1fv")
@@ -115,19 +79,17 @@ script = ExtResource("2_ye0o3")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
-position = Vector2(68.0175, -25.0685)
 scale = Vector2(3, 2.709)
 sprite_frames = SubResource("SpriteFrames_bript")
 animation = &"idle"
 frame_progress = 0.297031
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.5, 0.5)
+position = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_pvmv3")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(52, -32)
+position = Vector2(-27, -13)
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
 position = Vector2(53, -18)
@@ -141,10 +103,7 @@ texture = ExtResource("4_j7ej8")
 wait_time = 0.15
 autostart = true
 
-[node name="HitAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_gqudh")
-}
+[node name="HitAnimation" parent="." instance=ExtResource("5_huvx2")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
