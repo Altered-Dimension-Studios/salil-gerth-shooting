@@ -57,7 +57,8 @@ material = SubResource("ShaderMaterial_iks52")
 rotation = 0.261799
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_uxrgy")
-frame_progress = 0.994335
+frame = 3
+frame_progress = 0.693247
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.8326

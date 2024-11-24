@@ -44,6 +44,7 @@ autostart = true
 
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 60.0
+one_shot = true
 autostart = true
 
 [node name="UI" type="Control" parent="."]

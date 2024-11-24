@@ -5,6 +5,7 @@ const SPAWN_OFFSET_Y: int = 100
 const KAMIKAZE_ENEMY = preload("res://entities/kamikaze-enemy/kamikaze-enemy.tscn")
 const TRUCK_ENEMY = preload("res://entities/truck-enemy/truck-enemy.tscn")
 const SHOOTER_ENEMY = preload("res://entities/shooter-enemy/shooter-enemy.tscn")
+const BOSS_ENEMY = preload("res://entities/helicopter/helicopter.tscn")
 const TOP_RANGE = [0.2, 0.48]
 const LEFT_SPAWN_POINT: float = 0.012
 const RIGHT_SPAWN_POINT: float = 0.737
@@ -67,7 +68,6 @@ func spawn_top_shooter():
 	
 	var enemy_spawn_location = $SpawnLocation
 	enemy_spawn_location.progress_ratio = rng.randf_range(TOP_RANGE[0], TOP_RANGE[1])
-	# Offset so the enemy doesn't just pop up on the screen due to texture size
 	enemy_spawn_location.position.y -= SPAWN_OFFSET_Y
 	enemy.position = enemy_spawn_location.position
 	
@@ -80,8 +80,9 @@ func spawn_right():
 	spawn_trucks(RIGHT_SPAWN_POINT, Spawns.RIGHT_SPAWN)
 	
 func spawn_boss():
-	#var enemy = BOSS_ENEMY.instantiate()
-	return
+	var enemy = BOSS_ENEMY.instantiate()
+	add_child(enemy)
+	#return
 
 func _on_level_timer_timeout() -> void:
 	print('spawn boss')
