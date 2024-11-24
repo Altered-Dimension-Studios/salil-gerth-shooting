@@ -3,7 +3,7 @@ class_name Car
 
 const bulletPath = preload('res://entities/bullet/bullet.tscn')
 
-const NORMAL_SPEED: float = 400
+const NORMAL_SPEED: float = 550
 const SHOOTING_SPEED: float = 200
 const MIN_CLAMP_VECTOR: Vector2 = Vector2(25, 0)
 var MAX_CLAMP_VECTOR: Vector2

@@ -1,6 +1,5 @@
-extends Area2D
+extends Enemy
 
-const HEALTH = 100
 
 # Note: Speed and Fire Rate can grow based on health?
 var speed = 300.0 
@@ -8,6 +7,8 @@ var fire_rate = 0.5
 var facing_right = false
 
 # TODO: Add Attack and Health Bar
+func _init() -> void:
+	health = 100
 
 func _ready():
 	position.x = Settings.screen_size.y / 2

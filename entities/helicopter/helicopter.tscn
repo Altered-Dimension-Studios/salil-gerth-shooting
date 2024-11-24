@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmrrbjieom534"]
+[gd_scene load_steps=12 format=3 uid="uid://dmrrbjieom534"]
 
 [ext_resource type="Script" path="res://entities/helicopter/Boss.gd" id="1_gblno"]
 [ext_resource type="Texture2D" uid="uid://ih5dwxb2nvlu" path="res://entities/helicopter/helicopter-Sheet.png" id="1_jvb06"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_4t5g7"]
+[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_6m0xe"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iks52"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4w5m"]
 shader = ExtResource("2_4t5g7")
 shader_parameter/active = false
 
@@ -50,10 +50,13 @@ radius = 12.3676
 height = 52.955
 
 [node name="Area2D" type="Area2D"]
+material = SubResource("ShaderMaterial_e4w5m")
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_gblno")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_iks52")
+use_parent_material = true
 rotation = 0.261799
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_uxrgy")
@@ -70,4 +73,7 @@ position = Vector2(125.091, 47.0768)
 rotation = 0.261799
 scale = Vector2(0.67659, 4.9)
 
+[node name="HitAnimation" parent="." instance=ExtResource("4_6m0xe")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

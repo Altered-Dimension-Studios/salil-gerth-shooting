@@ -87,5 +87,5 @@ func spawn_boss():
 func _on_level_timer_timeout() -> void:
 	print('spawn boss')
 	spawn_boss()
-	$SpawnTimer.stop()
+	#$SpawnTimer.stop()
 	$TimerMasina.stop()
