@@ -21,6 +21,7 @@ func _init() -> void:
 	curren_state = State.CHARGE_ATTACK
 
 func _ready():
+	super()
 	position.x = Settings.screen_size.y / 2
 	position.y = Settings.screen_size.x / 8
 	$AnimatedSprite2D.play()

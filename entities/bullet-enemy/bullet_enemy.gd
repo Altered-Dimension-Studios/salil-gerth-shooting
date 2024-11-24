@@ -8,6 +8,7 @@ var curren_state: int
 var timer: float
 
 func _ready() -> void:
+	super()
 	$AnimatedSprite2D.play()
 	health = 1
 	curren_state = State.DROP_DOWN
@@ -34,4 +35,8 @@ func attack(delta: float) -> void:
 	position += path_to_player_car * SPEED * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
+
+
+func _on_explode_sprite_animation_finished() -> void:
 	queue_free()

@@ -7,6 +7,7 @@ var path_to_player_car: Vector2
 var timer: float
 
 func _ready() -> void:
+	super()
 	$AnimatedSprite2D.play()
 
 

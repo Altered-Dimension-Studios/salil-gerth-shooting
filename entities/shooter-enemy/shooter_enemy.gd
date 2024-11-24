@@ -14,6 +14,7 @@ var leave_delay: float = randf_range(2.0,6.0)
 var leave_timer: float = leave_delay
 
 func _ready() -> void:
+	super()
 	$AnimatedSprite2D.play()
 	target_drop_position = global_position + Vector2(0, 200)
 

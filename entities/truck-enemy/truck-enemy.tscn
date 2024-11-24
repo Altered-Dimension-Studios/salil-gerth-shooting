@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/truck-enemy/truck_enemy.gd" id="1_pp4n0"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_lv0nc"]
 [ext_resource type="Texture2D" uid="uid://b77glois3h88b" path="res://entities/truck-enemy/carpistol-Sheet-export.png" id="3_6585k"]
-[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_di17i"]
+[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="4_di17i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ubxq7"]
 resource_local_to_scene = true
@@ -85,8 +85,7 @@ modulate = Color(0.92, 0.184, 0.196266, 1)
 use_parent_material = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8kj8t")
-frame = 6
-frame_progress = 0.767778
+frame_progress = 0.087999
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-88, 0)

@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_8pyc5"]
 [ext_resource type="Script" path="res://entities/shooter-enemy/shooter_enemy.gd" id="2_4v061"]
 [ext_resource type="Texture2D" uid="uid://bifijf6qth5oq" path="res://entities/shooter-enemy/kamikaze_enemy.png" id="3_07pu1"]
-[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_nd6vi"]
+[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="4_nd6vi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8rv"]
 resource_local_to_scene = true
