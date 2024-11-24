@@ -13,6 +13,15 @@ enum Spawns {LEFT_SPAWN, TOP_SPAWN, RIGHT_SPAWN, SHOOTER_SPAWN}
 var rng = RandomNumberGenerator.new()
 
 
+func _ready() -> void:
+	SignalBus.boss_died.connect(_on_boss_died)
+
+
+func _on_boss_died() -> void:
+	$SpawnTimer.stop()
+	$TimerMasina.stop()
+
+
 func _on_spawn_timer_timeout() -> void:
 	random_spawn()
 
@@ -82,10 +91,8 @@ func spawn_right():
 func spawn_boss():
 	var enemy = BOSS_ENEMY.instantiate()
 	add_child(enemy)
-	#return
+
 
 func _on_level_timer_timeout() -> void:
-	print('spawn boss')
 	spawn_boss()
-	#$SpawnTimer.stop()
 	$TimerMasina.stop()

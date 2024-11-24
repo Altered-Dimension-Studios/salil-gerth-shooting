@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cs71wpnyysvr8"]
+
+[ext_resource type="FontFile" uid="uid://clw34skcxy7ll" path="res://fonts/yoster.ttf" id="1_jx4e2"]
+
+[resource]
+base_font = ExtResource("1_jx4e2")

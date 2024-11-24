@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://entities/car/car.gd" id="2_ye0o3"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_yxc70"]
 [ext_resource type="Texture2D" uid="uid://bfr4d0cshfuvp" path="res://entities/car/gun.png" id="4_j7ej8"]
-[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="5_huvx2"]
+[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="5_huvx2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cw1fv"]
 resource_local_to_scene = true
@@ -103,7 +103,12 @@ texture = ExtResource("4_j7ej8")
 wait_time = 0.15
 autostart = true
 
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="HitAnimation" parent="." instance=ExtResource("5_huvx2")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

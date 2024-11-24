@@ -31,6 +31,10 @@ window/size/viewport_width=1024
 window/size/viewport_height=1024
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="res://fonts/game_over.tres"
+
 [input]
 
 move_right={

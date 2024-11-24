@@ -9,16 +9,19 @@ const MIN_CLAMP_VECTOR: Vector2 = Vector2(25, 0)
 var MAX_CLAMP_VECTOR: Vector2
 var can_shoot: bool = true
 var shoot_hold_time: float = 0.0
-const INITIAL_FIRERATE: float = 0.3  
-const MIN_FIRERATE: float = 0.1     
-const FIRERATE_DECREASE_RATE: float = 0.05  
+const INITIAL_FIRERATE: float = 0.3
+const MIN_FIRERATE: float = 0.1
+const FIRERATE_DECREASE_RATE: float = 0.05
+var lives: int = 3
+const INVINCIBILITY_TIME: float  = 0.25
+var invincible: bool = false
 
 func _ready() -> void:
 	self.position.y = Settings.screen_size.y - 50
 	MAX_CLAMP_VECTOR = Settings.screen_size - Vector2(150, 0)
 	$Sprite.play()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var velocity = Vector2.ZERO
 	var current_speed = NORMAL_SPEED
 	
@@ -61,4 +64,21 @@ func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
 
 func _on_area_entered(_area: Area2D) -> void:
-	$HitAnimation.play("get_damaged")
+	if lives > 0 && !invincible:
+		turn_invincible()
+		lives -= 1
+		SignalBus.player_hit.emit(lives)
+		$HitAnimation.play("get_damaged")
+	
+	if lives <= 0:
+		hide()
+		SignalBus.player_died.emit()
+
+
+func turn_invincible() -> void:
+	invincible = true
+	$InvincibleTimer.start()
+
+
+func _on_invincible_timer_timeout() -> void:
+	invincible = false

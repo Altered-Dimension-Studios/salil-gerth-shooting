@@ -18,3 +18,6 @@ func _on_area_entered(area: Area2D) -> void:
 		# TODO: add explosion gfx here
 		queue_free()
 		SignalBus.enemy_died.emit()
+		
+		if is_in_group("boss"):
+			SignalBus.boss_died.emit()
