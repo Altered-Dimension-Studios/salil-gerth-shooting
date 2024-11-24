@@ -15,9 +15,8 @@ var speed = 300.0
 var fire_rate = 0.5
 var facing_right = false
 
-# TODO: Add Attack and Health Bar
 func _init() -> void:
-	health = 1
+	health = 100
 	curren_state = State.CHARGE_ATTACK
 
 func _ready():
