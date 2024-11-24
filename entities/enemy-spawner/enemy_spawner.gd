@@ -43,6 +43,24 @@ func spawn_top():
 	enemy.position = enemy_spawn_location.position
 	
 	add_child(enemy)
+	
+func spawn_trucks(spawn_point: float, spawn_type: Spawns):
+	var enemy = TRUCK_ENEMY.instantiate()
+	
+	var enemy_spawn_location = $SpawnLocation
+	enemy_spawn_location.progress_ratio = spawn_point
+	if(spawn_type == Spawns.LEFT_SPAWN):
+		enemy_spawn_location.position.x -= SPAWN_OFFSET_X
+		enemy.set_transition_direction(Vector2(1, 0))
+	elif (spawn_type == Spawns.RIGHT_SPAWN):
+		enemy_spawn_location.position.x += SPAWN_OFFSET_X
+		enemy.set_transition_direction(Vector2(-1, 0))
+	else:
+		push_error("This shouldn't be happening!")
+	enemy.position = enemy_spawn_location.position
+	
+	
+	add_child(enemy)
 
 func spawn_top_shooter():
 	var enemy = SHOOTER_ENEMY.instantiate()
@@ -56,29 +74,16 @@ func spawn_top_shooter():
 	add_child(enemy)
 
 func spawn_left():
-	var enemy = TRUCK_ENEMY.instantiate()
+	spawn_trucks(LEFT_SPAWN_POINT, Spawns.LEFT_SPAWN)
 	
-	var enemy_spawn_location = $SpawnLocation
-	enemy_spawn_location.progress_ratio = LEFT_SPAWN_POINT
-	enemy_spawn_location.position.x -= SPAWN_OFFSET_X
-	enemy.position = enemy_spawn_location.position
-	enemy.set_transition_direction(Vector2(1, 0))
-	
-	add_child(enemy)
-
-
 func spawn_right():
-	var enemy = TRUCK_ENEMY.instantiate()
+	spawn_trucks(RIGHT_SPAWN_POINT, Spawns.RIGHT_SPAWN)
 	
-	var enemy_spawn_location = $SpawnLocation
-	enemy_spawn_location.progress_ratio = RIGHT_SPAWN_POINT
-	enemy_spawn_location.position.x += SPAWN_OFFSET_X
-	enemy.position = enemy_spawn_location.position
-	enemy.set_transition_direction(Vector2(-1, 0))
-	
-	add_child(enemy)
-
+func spawn_boss():
+	var enemy = BOSS_ENEMY.instantiate()
 
 func _on_level_timer_timeout() -> void:
-	print("spawn boss")
+	print('spawn boss')
+	spawn_boss()
 	$SpawnTimer.stop()
+	$TimerMasina.stop()
