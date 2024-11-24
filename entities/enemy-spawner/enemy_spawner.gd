@@ -14,15 +14,20 @@ var rng = RandomNumberGenerator.new()
 func _on_spawn_timer_timeout() -> void:
 	random_spawn()
 
+func _on_timer_masina_timeout() -> void:
+	random_spawn_masina()
 
 func random_spawn():
+	var spawn_selected = Spawns.keys()[randi() % Spawns.size()]
+	if spawn_selected == Spawns.keys()[Spawns.TOP_SPAWN]:
+		spawn_top()
+		
+func random_spawn_masina():
 	var spawn_selected = Spawns.keys()[randi() % Spawns.size()]
 	if spawn_selected == Spawns.keys()[Spawns.LEFT_SPAWN]:
 		spawn_left()
 	elif spawn_selected == Spawns.keys()[Spawns.RIGHT_SPAWN]:
 		spawn_right()
-	elif spawn_selected == Spawns.keys()[Spawns.TOP_SPAWN]:
-		spawn_top()
 
 
 func spawn_top():

@@ -37,6 +37,10 @@ rotation = 1.56982
 progress = 3013.62
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
+wait_time = 0.35
+autostart = true
+
+[node name="TimerMasina" type="Timer" parent="EnemySpawner"]
 autostart = true
 
 [node name="LevelTimer" type="Timer" parent="."]
@@ -95,4 +99,5 @@ text = "1UP: 3"
 scroll_active = false
 
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/TimerMasina" to="EnemySpawner" method="_on_timer_masina_timeout"]
 [connection signal="timeout" from="LevelTimer" to="EnemySpawner" method="_on_level_timer_timeout"]
