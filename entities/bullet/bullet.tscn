@@ -1,95 +1,46 @@
-[gd_scene load_steps=16 format=3 uid="uid://rakoewugthpv"]
+[gd_scene load_steps=9 format=3 uid="uid://rakoewugthpv"]
 
 [ext_resource type="Script" path="res://entities/bullet/bullet.gd" id="1_0u3jp"]
-[ext_resource type="Texture2D" uid="uid://dai6i0ijs0mjx" path="res://entities/bullet/enemy-bullet-Sheet.png" id="2_dfneu"]
+[ext_resource type="Texture2D" uid="uid://b0knadke1msvl" path="res://entities/bullet/bullet-Sheet.png" id="2_o2fgb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xp7t2"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pq5t"]
+atlas = ExtResource("2_o2fgb")
+region = Rect2(0, 0, 10, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1bjf"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwr1r"]
+atlas = ExtResource("2_o2fgb")
+region = Rect2(10, 0, 10, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aixua"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6n65"]
+atlas = ExtResource("2_o2fgb")
+region = Rect2(20, 0, 10, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6aok7"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s31rj"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8uv6x"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jpuy"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hor0"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir5n8"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2k0s"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f3i3"]
-atlas = ExtResource("2_dfneu")
-region = Rect2(640, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i4tm"]
+atlas = ExtResource("2_o2fgb")
+region = Rect2(30, 0, 10, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8sfsg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xp7t2")
+"texture": SubResource("AtlasTexture_4pq5t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s1bjf")
+"texture": SubResource("AtlasTexture_kwr1r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aixua")
+"texture": SubResource("AtlasTexture_e6n65")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6aok7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s31rj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8uv6x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4jpuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1hor0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ir5n8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n2k0s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8f3i3")
+"texture": SubResource("AtlasTexture_4i4tm")
 }],
 "loop": true,
 "name": &"default",
-"speed": 30.0
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hvynp"]
-size = Vector2(28, 30)
+size = Vector2(36, 10)
 
 [node name="Area2D" type="Area2D" groups=["player_bullet"]]
 collision_layer = 2
@@ -97,15 +48,16 @@ collision_mask = 4
 script = ExtResource("1_0u3jp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.70876, 1.79639)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_8sfsg")
-frame_progress = 0.397851
+frame_progress = 0.391666
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.37114e-08, 0)
 shape = SubResource("RectangleShape2D_hvynp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(1.8, 0.5)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
