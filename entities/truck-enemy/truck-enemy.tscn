@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/truck-enemy/truck_enemy.gd" id="1_pp4n0"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_lv0nc"]
-[ext_resource type="Texture2D" uid="uid://btey38qy1ofwy" path="res://entities/car/Car_Sprite_Sheet.png" id="3_04e3p"]
+[ext_resource type="Texture2D" uid="uid://b77glois3h88b" path="res://entities/truck-enemy/carpistol-Sheet-export.png" id="3_6585k"]
 [ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_di17i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ubxq7"]
@@ -13,57 +13,57 @@ shader_parameter/active = false
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piafv"]
 size = Vector2(165, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jivy3"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmeal"]
+atlas = ExtResource("3_6585k")
 region = Rect2(0, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4n4a"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eyuy"]
+atlas = ExtResource("3_6585k")
 region = Rect2(64, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2c5nt"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5mvy"]
+atlas = ExtResource("3_6585k")
 region = Rect2(128, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5liu"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ek5w"]
+atlas = ExtResource("3_6585k")
 region = Rect2(192, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kn1mc"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8ntx"]
+atlas = ExtResource("3_6585k")
 region = Rect2(256, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_120jc"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk6mn"]
+atlas = ExtResource("3_6585k")
 region = Rect2(320, 0, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7b1ox"]
-atlas = ExtResource("3_04e3p")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jru1d"]
+atlas = ExtResource("3_6585k")
 region = Rect2(384, 0, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8kj8t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jivy3")
+"texture": SubResource("AtlasTexture_kmeal")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d4n4a")
+"texture": SubResource("AtlasTexture_8eyuy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2c5nt")
+"texture": SubResource("AtlasTexture_f5mvy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b5liu")
+"texture": SubResource("AtlasTexture_7ek5w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kn1mc")
+"texture": SubResource("AtlasTexture_q8ntx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_120jc")
+"texture": SubResource("AtlasTexture_dk6mn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7b1ox")
+"texture": SubResource("AtlasTexture_jru1d")
 }],
 "loop": true,
 "name": &"default",
@@ -85,7 +85,8 @@ modulate = Color(0.92, 0.184, 0.196266, 1)
 use_parent_material = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8kj8t")
-frame_progress = 0.632946
+frame = 6
+frame_progress = 0.767778
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-88, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnj30i230nhrc"
-path="res://.godot/imported/truck-enemy.png-471dac7b11833e9705b29e77678168d6.ctex"
+uid="uid://b77glois3h88b"
+path="res://.godot/imported/carpistol-Sheet-export.png-7ed3ab839e14946e7c10773ad889d085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/truck-enemy/truck-enemy.png"
-dest_files=["res://.godot/imported/truck-enemy.png-471dac7b11833e9705b29e77678168d6.ctex"]
+source_file="res://entities/truck-enemy/carpistol-Sheet-export.png"
+dest_files=["res://.godot/imported/carpistol-Sheet-export.png-7ed3ab839e14946e7c10773ad889d085.ctex"]
 
 [params]
 

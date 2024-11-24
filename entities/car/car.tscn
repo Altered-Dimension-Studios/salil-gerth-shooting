@@ -82,7 +82,7 @@ use_parent_material = true
 scale = Vector2(3, 2.709)
 sprite_frames = SubResource("SpriteFrames_bript")
 animation = &"idle"
-frame_progress = 0.297031
+frame_progress = 0.786664
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 2)
