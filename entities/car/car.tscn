@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cg508xt4ua557"]
+[gd_scene load_steps=17 format=3 uid="uid://cg508xt4ua557"]
 
 [ext_resource type="Texture2D" uid="uid://btey38qy1ofwy" path="res://entities/car/Car_Sprite_Sheet.png" id="2_hjqqg"]
 [ext_resource type="Script" path="res://entities/car/car.gd" id="2_ye0o3"]
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_yxc70"]
 [ext_resource type="Texture2D" uid="uid://bfr4d0cshfuvp" path="res://entities/car/gun.png" id="4_j7ej8"]
-[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="5_huvx2"]
+[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="5_huvx2"]
+[ext_resource type="AudioStream" uid="uid://c1aj2shnvscqr" path="res://entities/car/gunshot.wav" id="6_trrp2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cw1fv"]
 resource_local_to_scene = true
@@ -108,6 +109,10 @@ wait_time = 0.5
 one_shot = true
 
 [node name="HitAnimation" parent="." instance=ExtResource("5_huvx2")]
+
+[node name="bulletSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_trrp2")
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

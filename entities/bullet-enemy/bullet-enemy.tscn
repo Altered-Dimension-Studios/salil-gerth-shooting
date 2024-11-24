@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://coaicoodwoqy6"]
+[gd_scene load_steps=12 format=3 uid="uid://coaicoodwoqy6"]
 
 [ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_1g6su"]
 [ext_resource type="Script" path="res://entities/bullet-enemy/bullet_enemy.gd" id="2_sk43i"]
-[ext_resource type="Texture2D" uid="uid://dmkojst424kyq" path="res://entities/bullet-enemy/enemy_bullet_placeholder.png" id="3_3boso"]
-[ext_resource type="PackedScene" uid="uid://ca86qfg5fkxak" path="res://hit_animation.tscn" id="4_5fwgu"]
+[ext_resource type="Texture2D" uid="uid://bkkt707ulqkn" path="res://entities/bullet-enemy/bullet-Sheet.png" id="3_kufup"]
+[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_5fwgu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8rv"]
 resource_local_to_scene = true
@@ -11,13 +11,38 @@ shader = ExtResource("1_1g6su")
 shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jmy"]
-size = Vector2(16.4, 16.8)
+size = Vector2(41, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxfcg"]
+atlas = ExtResource("3_kufup")
+region = Rect2(0, 0, 10, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0yf2"]
+atlas = ExtResource("3_kufup")
+region = Rect2(10, 0, 10, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umnvu"]
+atlas = ExtResource("3_kufup")
+region = Rect2(20, 0, 10, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vimh"]
+atlas = ExtResource("3_kufup")
+region = Rect2(30, 0, 10, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1qdfd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3boso")
+"texture": SubResource("AtlasTexture_dxfcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0yf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umnvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vimh")
 }],
 "loop": true,
 "name": &"default",
@@ -31,20 +56,19 @@ collision_mask = 3
 script = ExtResource("2_sk43i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1)
-scale = Vector2(2.5, 2.5)
+position = Vector2(1.5, 1.19209e-07)
 shape = SubResource("RectangleShape2D_n8jmy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 position = Vector2(1, 2.38419e-07)
-scale = Vector2(0.22775, 0.22775)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_1qdfd")
 frame_progress = 0.712049
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.5, 2)
-scale = Vector2(2.05, 2)
+position = Vector2(1.5, 0.5)
+scale = Vector2(2.05, 0.55)
 
 [node name="HitAnimation" parent="." instance=ExtResource("4_5fwgu")]
 

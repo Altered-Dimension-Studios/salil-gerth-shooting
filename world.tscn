@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx8bfcld6kqsj"]
+[gd_scene load_steps=10 format=3 uid="uid://bx8bfcld6kqsj"]
 
 [ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_b6x71"]
 [ext_resource type="PackedScene" uid="uid://cfuh00lklmk42" path="res://scenes/background.tscn" id="3_uux4w"]
 [ext_resource type="Script" path="res://entities/enemy-spawner/enemy_spawner.gd" id="4_lc5xu"]
 [ext_resource type="Script" path="res://ui.gd" id="5_anf6h"]
 [ext_resource type="Script" path="res://ui/info-panel.gd" id="5_p3qd7"]
+[ext_resource type="AudioStream" uid="uid://c6th1njkh7t65" path="res://loop.wav" id="6_r6roe"]
 
 [sub_resource type="Curve2D" id="Curve2D_wic8y"]
 _data = {
@@ -26,6 +27,11 @@ layer = -5
 
 [node name="Settings" parent="." instance=ExtResource("2_b6x71")]
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="Settings"]
+stream = ExtResource("6_r6roe")
+autoplay = true
+playback_type = 1
+
 [node name="EnemySpawner" type="Path2D" parent="."]
 curve = SubResource("Curve2D_wic8y")
 script = ExtResource("4_lc5xu")
@@ -39,6 +45,7 @@ progress = 3013.62
 autostart = true
 
 [node name="TimerMasina" type="Timer" parent="EnemySpawner"]
+wait_time = 2.5
 autostart = true
 
 [node name="LevelTimer" type="Timer" parent="."]
@@ -117,6 +124,7 @@ theme_override_font_sizes/normal_font_size = 100
 fit_content = true
 scroll_active = false
 
+[connection signal="finished" from="Settings/BGM" to="Settings" method="_on_bgm_finished"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/TimerMasina" to="EnemySpawner" method="_on_timer_masina_timeout"]
 [connection signal="timeout" from="LevelTimer" to="EnemySpawner" method="_on_level_timer_timeout"]

@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	if lives > 0:
+		$bulletSoundEffect.play()
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
 		bullet.transform = $Node2D/Marker2D.global_transform
