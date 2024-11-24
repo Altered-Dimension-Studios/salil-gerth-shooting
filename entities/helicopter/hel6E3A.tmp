@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmrrbjieom534"]
+
+[ext_resource type="Script" path="res://entities/helicopter/Boss.gd" id="1_gblno"]
+[ext_resource type="Texture2D" uid="uid://ih5dwxb2nvlu" path="res://entities/helicopter/helicopter-Sheet.png" id="1_jvb06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1jgc"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(0, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h661"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(50, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0nh"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(100, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_merh1"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(150, 0, 50, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxrgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1jgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h661")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_merh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0wvbr"]
+radius = 12.3676
+height = 52.955
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gblno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.261799
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uxrgy")
+frame_progress = 0.0606227
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.8326
+scale = Vector2(6, 6)
+shape = SubResource("CapsuleShape2D_0wvbr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(131, 42)

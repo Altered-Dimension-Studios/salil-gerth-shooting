@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmrrbjieom534"]
+
+[ext_resource type="Script" path="res://entities/helicopter/Boss.gd" id="1_gblno"]
+[ext_resource type="Texture2D" uid="uid://ih5dwxb2nvlu" path="res://entities/helicopter/helicopter-Sheet.png" id="1_jvb06"]
+[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="2_4t5g7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iks52"]
+resource_local_to_scene = true
+shader = ExtResource("2_4t5g7")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1jgc"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(0, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h661"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(50, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0nh"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(100, 0, 50, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_merh1"]
+atlas = ExtResource("1_jvb06")
+region = Rect2(150, 0, 50, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxrgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1jgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h661")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_merh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0wvbr"]
+radius = 12.3676
+height = 52.955
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gblno")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_iks52")
+rotation = 0.261799
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_uxrgy")
+frame_progress = 0.994335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.8326
+scale = Vector2(6, 6)
+shape = SubResource("CapsuleShape2D_0wvbr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(125.091, 47.0768)
+rotation = 0.261799
+scale = Vector2(0.67659, 4.9)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

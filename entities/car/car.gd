@@ -61,5 +61,4 @@ func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
 
 func _on_area_entered(_area: Area2D) -> void:
-	#print('dead')
 	$HitAnimation.play("get_damaged")
