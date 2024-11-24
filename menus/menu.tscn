@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmwqmsoio6g57"]
+
+[ext_resource type="Script" path="res://menus/menu.gd" id="1_gf64a"]
+[ext_resource type="AudioStream" uid="uid://bugy2ygin48vy" path="res://menus/mainmenu.wav" id="2_evvek"]
+[ext_resource type="Texture2D" uid="uid://dyhpscxigwnnm" path="res://menus/logo.png" id="3_e6bgh"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gf64a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+color = Color(0.0128424, 0.115227, 0.167116, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 736.0
+offset_right = 512.0
+offset_bottom = 864.0
+scale = Vector2(2, 1.26501)
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(67.9999, -75.8889)
+scale = Vector2(2, 3.16204)
+texture = ExtResource("3_e6bgh")
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_evvek")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
