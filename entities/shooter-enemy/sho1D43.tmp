@@ -1,52 +1,52 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqiulx4s8wtl3"]
+[gd_scene load_steps=11 format=3 uid="uid://yra6y5glus11"]
 
-[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_5nsjq"]
-[ext_resource type="Script" path="res://entities/kamikaze-enemy/kamikaze_enemy.gd" id="1_68l7g"]
-[ext_resource type="Texture2D" uid="uid://d2hofbp6dxcuk" path="res://entities/bullet-enemy/enemy-bullet-sheet.png" id="3_gl67y"]
-[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="3_xefty"]
+[ext_resource type="Shader" path="res://entities/car/car.gdshader" id="1_8pyc5"]
+[ext_resource type="Script" path="res://entities/shooter-enemy/shooter_enemy.gd" id="2_4v061"]
+[ext_resource type="Texture2D" uid="uid://bifijf6qth5oq" path="res://entities/shooter-enemy/kamikaze_enemy.png" id="3_07pu1"]
+[ext_resource type="PackedScene" path="res://hit_animation.tscn" id="4_nd6vi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hj8rv"]
 resource_local_to_scene = true
-shader = ExtResource("1_5nsjq")
+shader = ExtResource("1_8pyc5")
 shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8jmy"]
 size = Vector2(36, 15.9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_frgbw"]
-atlas = ExtResource("3_gl67y")
-region = Rect2(0, 0, 37, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_btjy3"]
+atlas = ExtResource("3_07pu1")
+region = Rect2(0, 0, 37, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_itumh"]
-atlas = ExtResource("3_gl67y")
-region = Rect2(37, 0, 37, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktg40"]
+atlas = ExtResource("3_07pu1")
+region = Rect2(37, 0, 37, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvsl8"]
-atlas = ExtResource("3_gl67y")
-region = Rect2(74, 0, 37, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1vu8"]
+atlas = ExtResource("3_07pu1")
+region = Rect2(74, 0, 37, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1qdfd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_frgbw")
+"texture": SubResource("AtlasTexture_btjy3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_itumh")
+"texture": SubResource("AtlasTexture_ktg40")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hvsl8")
+"texture": SubResource("AtlasTexture_r1vu8")
 }],
 "loop": true,
 "name": &"default",
 "speed": 12.0
 }]
 
-[node name="KamikazeEnemy" type="Area2D"]
+[node name="ShooterEnemy" type="Area2D"]
 material = SubResource("ShaderMaterial_hj8rv")
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_68l7g")
+script = ExtResource("2_4v061")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11.875)
@@ -64,7 +64,7 @@ frame_progress = 0.712049
 position = Vector2(-3.8147e-06, -12)
 scale = Vector2(4.5, 2)
 
-[node name="HitAnimation" parent="." instance=ExtResource("3_xefty")]
+[node name="HitAnimation" parent="." instance=ExtResource("4_nd6vi")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

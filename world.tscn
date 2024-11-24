@@ -37,7 +37,6 @@ rotation = 1.56982
 progress = 3013.62
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
-wait_time = 0.35
 autostart = true
 
 [node name="TimerMasina" type="Timer" parent="EnemySpawner"]

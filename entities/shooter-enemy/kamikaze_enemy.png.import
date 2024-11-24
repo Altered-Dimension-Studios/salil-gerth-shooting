@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dafs7flh0twfp"
-path="res://.godot/imported/kamikaze_enemy.png-91404d69feaaffa95f6f26c2e1481709.ctex"
+uid="uid://bifijf6qth5oq"
+path="res://.godot/imported/kamikaze_enemy.png-d6f0805c9481436468609a0d95bb35d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/kamikaze-enemy/kamikaze_enemy.png"
-dest_files=["res://.godot/imported/kamikaze_enemy.png-91404d69feaaffa95f6f26c2e1481709.ctex"]
+source_file="res://entities/shooter-enemy/kamikaze_enemy.png"
+dest_files=["res://.godot/imported/kamikaze_enemy.png-d6f0805c9481436468609a0d95bb35d8.ctex"]
 
 [params]
 
