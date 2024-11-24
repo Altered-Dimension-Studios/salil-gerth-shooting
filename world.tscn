@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx8bfcld6kqsj"]
+[gd_scene load_steps=11 format=3 uid="uid://bx8bfcld6kqsj"]
 
 [ext_resource type="PackedScene" uid="uid://c8em1qhsfgfvb" path="res://globals/settings.tscn" id="2_b6x71"]
 [ext_resource type="PackedScene" uid="uid://cfuh00lklmk42" path="res://scenes/background.tscn" id="3_uux4w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ui.gd" id="5_anf6h"]
 [ext_resource type="Script" path="res://ui/info-panel.gd" id="5_p3qd7"]
 [ext_resource type="AudioStream" uid="uid://c6th1njkh7t65" path="res://loop.wav" id="6_r6roe"]
+[ext_resource type="AudioStream" uid="uid://d36j1ldc4wg5n" path="res://ui/gameOverr.wav" id="7_tgvy0"]
 
 [sub_resource type="Curve2D" id="Curve2D_wic8y"]
 _data = {
@@ -49,7 +50,7 @@ wait_time = 2.5
 autostart = true
 
 [node name="LevelTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 0.083
 one_shot = true
 autostart = true
 
@@ -123,6 +124,10 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 100
 fit_content = true
 scroll_active = false
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="UI"]
+stream = ExtResource("7_tgvy0")
+volume_db = 10.307
 
 [connection signal="finished" from="Settings/BGM" to="Settings" method="_on_bgm_finished"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

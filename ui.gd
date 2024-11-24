@@ -11,5 +11,6 @@ func _on_boss_died() -> void:
 
 
 func _on_player_died() -> void:
+	$GameOver.play()
 	$EndGameText.text = "GAME OVER"
 	$EndGameText.visible = true

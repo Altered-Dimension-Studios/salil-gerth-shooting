@@ -95,4 +95,5 @@ func spawn_boss():
 
 func _on_level_timer_timeout() -> void:
 	spawn_boss()
+	$SpawnTimer.wait_time = 2
 	$TimerMasina.stop()

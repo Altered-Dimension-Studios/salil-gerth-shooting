@@ -73,6 +73,7 @@ func _on_area_entered(_area: Area2D) -> void:
 		$HitAnimation.play("get_damaged")
 	
 	if lives <= 0:
+		remove_child($CollisionShape2D)
 		hide()
 		SignalBus.player_died.emit()
 
