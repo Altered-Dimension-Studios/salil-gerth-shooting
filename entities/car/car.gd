@@ -48,17 +48,18 @@ func _physics_process(delta: float) -> void:
 	$Node2D.look_at(get_global_mouse_position())
 
 func shoot():
-	var bullet = bulletPath.instantiate()
-	get_parent().add_child(bullet)
-	bullet.transform = $Node2D/Marker2D.global_transform
-	
-	can_shoot = false
-	var new_cooldown = max(
-		INITIAL_FIRERATE - (shoot_hold_time * FIRERATE_DECREASE_RATE),
-		MIN_FIRERATE
-	)
-	$ShootCooldown.wait_time = new_cooldown
-	$ShootCooldown.start()
+	if lives > 0:
+		var bullet = bulletPath.instantiate()
+		get_parent().add_child(bullet)
+		bullet.transform = $Node2D/Marker2D.global_transform
+		
+		can_shoot = false
+		var new_cooldown = max(
+			INITIAL_FIRERATE - (shoot_hold_time * FIRERATE_DECREASE_RATE),
+			MIN_FIRERATE
+		)
+		$ShootCooldown.wait_time = new_cooldown
+		$ShootCooldown.start()
 
 func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
