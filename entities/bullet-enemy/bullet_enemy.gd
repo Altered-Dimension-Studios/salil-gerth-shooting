@@ -2,7 +2,7 @@ extends Enemy
 
 enum State { DROP_DOWN, ATTACK }
 
-const SPEED = 300
+const SPEED = 700
 var path_to_player_car = Vector2.ZERO  
 var curren_state: int
 var timer: float
