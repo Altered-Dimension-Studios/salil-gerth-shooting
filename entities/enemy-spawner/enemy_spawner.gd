@@ -80,7 +80,8 @@ func spawn_right():
 	spawn_trucks(RIGHT_SPAWN_POINT, Spawns.RIGHT_SPAWN)
 	
 func spawn_boss():
-	var enemy = BOSS_ENEMY.instantiate()
+	#var enemy = BOSS_ENEMY.instantiate()
+	return
 
 func _on_level_timer_timeout() -> void:
 	print('spawn boss')
