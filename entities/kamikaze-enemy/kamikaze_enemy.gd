@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 
 func charge_attack(delta) -> void:
-	position += (path_to_player_car * SPEED * delta) * -1
+	position += (path_to_player_car * SPEED * delta) * 0
 	if timer >= 0:
 		timer -= delta
 	else:
@@ -45,7 +45,7 @@ func drop_down(delta: float) -> void:
 	else:
 		path_to_player_car = (World.get_car_position() - global_position).normalized()
 		curren_state = State.CHARGE_ATTACK
-		timer = 0.2
+		timer = randf_range(0,2)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
